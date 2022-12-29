@@ -15,6 +15,7 @@ function! s:runner_run(commands, input, session) abort dict
         \ ? printf('cmd.exe /c (%s)', command)
         \ : ['sh', '-c', command]
   let options = {
+        \ 'env': { 'NO_COLOR': '1' },
         \ 'session': a:session.continue(),
         \ 'on_stdout': funcref('s:on_stdout'),
         \ 'on_stderr': funcref('s:on_stdout'),
